@@ -1,17 +1,29 @@
 export default class Board {
-    constructor(state = ["X", "", "X", "", "", "", "", "", ""]) {
+    constructor(state = ["X", "O", "X", "", "", "", "", "", ""], currentPlayer = "X") {
       this.state = state;
-      
+      this.currentPlayer = currentPlayer;
     }
+      
 
     loadBoard() {
-      const container = document.querySelectorAll('.board');
+      const container = document.querySelectorAll('.section');
       container.forEach((item) => {
         const squareIndex = item.dataset.index;
         const currentValue = this.state[squareIndex];
         item.innerHTML = `<p>${currentValue}</p>`;
       });
     }
+
+    currentPlayerChange(index) {
+      this.addNewState(this.currentPlayer, index)
+      if (this.currentPlayer === "X") {
+      this.currentPlayer = "O"
+      } else {
+      this.currentPlayer = "X"
+     }
+  
+    }
+
   
     printBoard() {
       let formattedString = "";
@@ -143,10 +155,6 @@ export default class Board {
     }
   }
   
-  const board = new Board();
-//   board.addNewState("O",0);
-//   board.addNewState("O", 4);
-//   board.addNewState("O", 8);
-  board.availableIndex();
+ 
   
 
