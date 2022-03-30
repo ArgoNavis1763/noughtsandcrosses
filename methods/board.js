@@ -1,5 +1,5 @@
 export default class Board {
-    constructor(state = ["X", "O", "X", "", "", "", "", "", ""], currentPlayer = "X") {
+    constructor(state = ["", "", "", "", "", "", "", "", ""], currentPlayer = "X") {
       this.state = state;
       this.currentPlayer = currentPlayer;
     }

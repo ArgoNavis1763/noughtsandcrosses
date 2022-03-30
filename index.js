@@ -9,9 +9,10 @@ container.forEach((item) => {
     const squareIndex = item.dataset.index;
     const currentValue = board.state[squareIndex];
     item.innerHTML = `<p>${currentValue}</p>`;
-    item.addEventListener('click', (event) => {
-        const index = event.target.getAttribute('data-index');
+    item.addEventListener('click', () => {
+        const index = item.dataset.index;
         board.currentPlayerChange(index);
+        board.loadBoard()
     })
 })
 });
