@@ -1,0 +1,12 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  min-height: 900px;
+  min-width: 900px;
+}
+
+.section {
+  border: 2px solid blueviolet;
+  display: grid;
+}
