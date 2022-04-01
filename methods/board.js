@@ -151,7 +151,16 @@ export default class Board {
       } else {
         gameWon = null;
       }
-      return gameWon;
+      const result = document.getElementById("result");
+      if (gameWon === null) {
+        result.innerText = ""
+        } 
+      else if (gameWon.winner === "draw" ) {
+      result.innerText = "This game is a draw";
+      } else {
+        result.innerText = `The winner of the game is ${gameWon.winner} and the direction is ${gameWon.direction}`;
+      }
+     
     }
   }
   
