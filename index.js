@@ -1,9 +1,8 @@
 import  Board  from "./methods/board.js";
- 
-document.addEventListener("DOMContentLoaded", () => {
 const board = new Board()
-board.loadBoard()
 
+document.addEventListener("DOMContentLoaded", () => {
+loadBoard(board.state);
 
 const container = document.querySelectorAll('.section')
 container.forEach((item) => {
@@ -13,14 +12,35 @@ container.forEach((item) => {
     item.innerHTML = `<p>${currentValue}</p>`;
     item.addEventListener('click', () => {
         const index = item.dataset.index;
-        board.currentPlayerChange(index);
-        board.loadBoard()
+        const result = document.getElementById("result");
+
+        try {
+            board.currentPlayerChange(index);
+            result.innerText = "";
+        } catch(error) {
+            result.innerText = "ERROR";
+        }
+       
+        loadBoard(board.state);
         console.log(board.gameWon());
-        
         
     })
 })
 });
+
+const loadBoard = (boardState) => {
+    const container = document.querySelectorAll('.section');
+    container.forEach((item) => {
+        const squareIndex = item.dataset.index;
+        const currentValue = boardState[squareIndex];
+        item.innerHTML = `<p>${currentValue}</p>`;
+    });
+}
+
+const resetButton = document.getElementById("reset");
+resetButton.addEventListener("click", () => {
+    loadBoard(["", "", "", "", "", "", "", "", ""])
+})
 
 
 

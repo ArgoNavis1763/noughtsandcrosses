@@ -3,16 +3,7 @@ export default class Board {
       this.state = state;
       this.currentPlayer = currentPlayer;
     }
-      
-
-    loadBoard() {
-      const container = document.querySelectorAll('.section');
-      container.forEach((item) => {
-        const squareIndex = item.dataset.index;
-        const currentValue = this.state[squareIndex];
-        item.innerHTML = `<p>${currentValue}</p>`;
-      });
-    }
+    
 
     currentPlayerChange(index) {
       this.addNewState(this.currentPlayer, index)
@@ -41,7 +32,6 @@ export default class Board {
           }
         }
       });
-  
       console.log("%c" + formattedString, "color: purple; font-size: 20px");
     }
   
@@ -76,7 +66,6 @@ export default class Board {
       if (newXO !== "X" && newXO !== "O") {
         throw new Error("Invalid Character - please insert X or O");
       } else if (this.state[index] !== "") {
-        result.innerHTML = "This space is full"
         throw new Error("This space is full");
         
       } else {
@@ -89,6 +78,7 @@ export default class Board {
           throw new Error("Index Does Not Exist");
         }
       }
+      return this.state;
     }
     availableIndex() {
       let availableArray = [];
@@ -96,7 +86,8 @@ export default class Board {
         if (item === "") {
           availableArray.push(index);
         }
-      });
+      })
+      return availableArray;
     }
     gameWon() {
       let gameWon;
@@ -144,8 +135,8 @@ export default class Board {
         gameWon = { winner: this.state[0], direction: "diagonal" };
       else if (
         this.state[2] === this.state[4] &&
-        this.state[4] === this.state[7] &&
-        this.state[7] !== ""
+        this.state[4] === this.state[6] &&
+        this.state[6] !== ""
       )
         gameWon = { winner: this.state[2], direction: "diagonal" };
       else if (this.isFull()) {
@@ -153,15 +144,16 @@ export default class Board {
       } else {
         gameWon = null;
       }
-      const result = document.getElementById("result");
-      if (gameWon === null) {
-        result.innerText = ""
-        } 
-      else if (gameWon.winner === "draw" ) {
-      result.innerText = "This game is a draw";
-      } else {
-        result.innerText = `The winner of the game is ${gameWon.winner} and the direction is ${gameWon.direction}`;
-      }
+      return gameWon;
+      // const result = document.getElementById("result");
+      // if (gameWon === null) {
+      //   result.innerText = ""
+      //   } 
+      // else if (gameWon.winner === "draw" ) {
+      // result.innerText = "This game is a draw";
+      // } else {
+      //   result.innerText = `The winner of the game is ${gameWon.winner} and the direction is ${gameWon.direction}`;
+      // }
      
     }
   }

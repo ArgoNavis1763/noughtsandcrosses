@@ -1,0 +1,25 @@
+{
+  "name": "noughtsandcrosses",
+  "version": "1.0.0",
+  "description": "noughtsandcrossestest",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArgoNavis1763/noughtsandcrosses.git"
+  },
+  "author": "Carina Druce",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArgoNavis1763/noughtsandcrosses/issues"
+  },
+  "homepage": "https://github.com/ArgoNavis1763/noughtsandcrosses#readme",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^27.5.1",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^27.5.1"
+  }
+}
