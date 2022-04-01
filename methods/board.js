@@ -76,7 +76,9 @@ export default class Board {
       if (newXO !== "X" && newXO !== "O") {
         throw new Error("Invalid Character - please insert X or O");
       } else if (this.state[index] !== "") {
+        result.innerHTML = "This space is full"
         throw new Error("This space is full");
+        
       } else {
         this.state[index] = newXO;
         this.printBoard();
