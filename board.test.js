@@ -1,4 +1,4 @@
-import Board from './methods/board.js';
+import Board from './classes/board.js';
 
 test('new instance of board state returns 9 empty strings', () => {
   const board = new Board();

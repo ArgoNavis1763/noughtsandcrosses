@@ -1,9 +1,7 @@
 export default class Board {
-  constructor(state = ['', '', '', '', '', '', '', '', ''], currentPlayer = 'X', playerX, playerO) {
+  constructor(state = ['', '', '', '', '', '', '', '', ''], currentPlayer = 'X') {
     this.state = state;
     this.currentPlayer = currentPlayer;
-    this.playerX = playerX;
-    this.playerO = playerO;
   }
 
   currentPlayerChange(index) {
@@ -108,19 +106,13 @@ export default class Board {
     } else {
       gameWon = null;
     }
+
     return gameWon;
-    // const result = document.getElementById("result");
-    // if (gameWon === null) {
-    //   result.innerText = ""
-    //   }
-    // else if (gameWon.winner === "draw" ) {
-    // result.innerText = "This game is a draw";
-    // } else {
-    //   result.innerText = `The winner of the game is ${gameWon.winner} and the direction is ${gameWon.direction}`;
-    // }
   }
 
   resetBoard() {
     this.state = ['', '', '', '', '', '', '', '', ''];
+    this.currentPlayer = 'X';
+    result.innerText = '';
   }
 }
